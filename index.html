@@ -64,8 +64,6 @@ header {
     text-transform: uppercase;
 }
 
-/* LOGO */
-
 .logo-link {
     position: absolute;
     left: 50%;
@@ -230,9 +228,10 @@ textarea {
 .category {
     position: relative;
     cursor: pointer;
+    min-width: 0;
 }
 
-.category input {
+.category input[type="radio"] {
     position: absolute;
     opacity: 0;
     pointer-events: none;
@@ -287,15 +286,40 @@ textarea {
     border-color: #9ba9b8;
 }
 
-/* NUMÉRO DE COMMANDE ET AUTRE DEMANDE */
+/* CHAMP NUMÉRO DE COMMANDE SOUS CHAQUE CATÉGORIE */
 
-#orderField,
+.order-field {
+    display: none;
+    margin-top: 12px;
+    padding: 0 2px;
+    cursor: default;
+}
+
+.order-field.visible {
+    display: block;
+}
+
+.order-field label {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 7px;
+}
+
+.order-field input {
+    width: 100%;
+    padding: 11px 9px;
+    font-size: 11px;
+}
+
+/* AUTRE DEMANDE */
+
 #otherField {
     display: none;
     margin-top: 20px;
 }
 
-#orderField.visible,
 #otherField.visible {
     display: block;
 }
@@ -578,6 +602,8 @@ footer {
 
                 <div class="categories">
 
+                    <!-- COMMANDE -->
+
                     <label class="category">
                         <input type="radio" name="Catégorie" value="Commande" required>
 
@@ -589,7 +615,20 @@ footer {
                             </svg>
                             <span>Commande</span>
                         </div>
+
+                        <div class="order-field">
+                            <label for="orderCommande">Numéro de commande *</label>
+                            <input
+                                type="text"
+                                id="orderCommande"
+                                name="Numéro de commande"
+                                placeholder="Ex : LF123456"
+                                data-order-input
+                            >
+                        </div>
                     </label>
+
+                    <!-- LIVRAISON -->
 
                     <label class="category">
                         <input type="radio" name="Catégorie" value="Livraison">
@@ -603,7 +642,19 @@ footer {
                             </svg>
                             <span>Livraison</span>
                         </div>
+
+                        <div class="order-field">
+                            <label for="orderLivraison">Numéro de commande *</label>
+                            <input
+                                type="text"
+                                id="orderLivraison"
+                                placeholder="Ex : LF123456"
+                                data-order-input
+                            >
+                        </div>
                     </label>
+
+                    <!-- FACTURATION -->
 
                     <label class="category">
                         <input type="radio" name="Catégorie" value="Facturation">
@@ -615,7 +666,19 @@ footer {
                             </svg>
                             <span>Facturation</span>
                         </div>
+
+                        <div class="order-field">
+                            <label for="orderFacturation">Numéro de commande *</label>
+                            <input
+                                type="text"
+                                id="orderFacturation"
+                                placeholder="Ex : LF123456"
+                                data-order-input
+                            >
+                        </div>
                     </label>
+
+                    <!-- PRODUIT -->
 
                     <label class="category">
                         <input type="radio" name="Catégorie" value="Produit">
@@ -626,7 +689,19 @@ footer {
                             </svg>
                             <span>Produit</span>
                         </div>
+
+                        <div class="order-field">
+                            <label for="orderProduit">Numéro de commande *</label>
+                            <input
+                                type="text"
+                                id="orderProduit"
+                                placeholder="Ex : LF123456"
+                                data-order-input
+                            >
+                        </div>
                     </label>
+
+                    <!-- INFORMATIONS COMMERCIALES -->
 
                     <label class="category">
                         <input type="radio" name="Catégorie" value="Informations commerciales">
@@ -641,6 +716,8 @@ footer {
                         </div>
                     </label>
 
+                    <!-- RÉCLAMATION -->
+
                     <label class="category">
                         <input type="radio" name="Catégorie" value="Réclamation">
 
@@ -652,7 +729,19 @@ footer {
                             </svg>
                             <span>Réclamation</span>
                         </div>
+
+                        <div class="order-field">
+                            <label for="orderReclamation">Numéro de commande *</label>
+                            <input
+                                type="text"
+                                id="orderReclamation"
+                                placeholder="Ex : LF123456"
+                                data-order-input
+                            >
+                        </div>
                     </label>
+
+                    <!-- AUTRE DEMANDE -->
 
                     <label class="category">
                         <input
@@ -672,25 +761,6 @@ footer {
                     </label>
 
                 </div>
-            </div>
-
-            <!-- NUMÉRO DE COMMANDE : JUSTE SOUS LES LOGOS -->
-
-            <div id="orderField">
-
-                <div class="field">
-                    <label for="orderNumber">
-                        Numéro de commande <span class="required">*</span>
-                    </label>
-
-                    <input
-                        type="text"
-                        id="orderNumber"
-                        name="Numéro de commande"
-                        placeholder="Exemple : LF123456"
-                    >
-                </div>
-
             </div>
 
             <!-- AUTRE DEMANDE -->
@@ -783,16 +853,16 @@ footer {
 </footer>
 
 <script>
-const otherChoice = document.getElementById("otherChoice");
-const otherField = document.getElementById("otherField");
-const otherDetails = document.getElementById("otherDetails");
-
-const orderField = document.getElementById("orderField");
-const orderNumber = document.getElementById("orderNumber");
-
 const categoryInputs = document.querySelectorAll(
     'input[name="Catégorie"]'
 );
+
+const orderFields = document.querySelectorAll(".order-field");
+const orderInputs = document.querySelectorAll("[data-order-input]");
+
+const otherChoice = document.getElementById("otherChoice");
+const otherField = document.getElementById("otherField");
+const otherDetails = document.getElementById("otherDetails");
 
 function updateFields() {
 
@@ -802,7 +872,31 @@ function updateFields() {
 
     const category = selected ? selected.value : "";
 
-    // Gestion de la catégorie "Autre demande"
+    // Afficher le numéro de commande uniquement
+    // sous la catégorie sélectionnée qui en a besoin.
+
+    orderFields.forEach(field => {
+        const radio = field.parentElement.querySelector(
+            'input[type="radio"]'
+        );
+
+        const shouldShow = radio.checked;
+
+        field.classList.toggle("visible", shouldShow);
+
+        const input = field.querySelector("[data-order-input]");
+
+        input.required = shouldShow;
+
+        if (!shouldShow) {
+            input.value = "";
+            input.removeAttribute("name");
+        } else {
+            input.name = "Numéro de commande";
+        }
+    });
+
+    // Gestion de la catégorie Autre demande.
 
     const isOther = category === "Autre demande";
 
@@ -812,32 +906,13 @@ function updateFields() {
     if (!isOther) {
         otherDetails.value = "";
     }
-
-    // Gestion du numéro de commande
-
-    const categoriesWithOrder = [
-        "Commande",
-        "Livraison",
-        "Facturation",
-        "Produit",
-        "Réclamation"
-    ];
-
-    const needsOrderNumber = categoriesWithOrder.includes(category);
-
-    orderField.classList.toggle("visible", needsOrderNumber);
-    orderNumber.required = needsOrderNumber;
-
-    if (!needsOrderNumber) {
-        orderNumber.value = "";
-    }
 }
 
 categoryInputs.forEach(input => {
     input.addEventListener("change", updateFields);
 });
 
-// Gestion de l'envoi
+// Gestion de l'envoi du formulaire.
 
 const form = document.getElementById("contactForm");
 const submitButton = document.getElementById("submitButton");
