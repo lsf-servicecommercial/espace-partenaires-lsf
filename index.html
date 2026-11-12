@@ -32,6 +32,8 @@ body {
     color: var(--text);
 }
 
+/* HEADER */
+
 header {
     height: 105px;
     background: white;
@@ -61,6 +63,8 @@ header {
     letter-spacing: 1px;
     text-transform: uppercase;
 }
+
+/* LOGO */
 
 .logo-link {
     position: absolute;
@@ -92,6 +96,8 @@ header {
     letter-spacing: 1px;
     text-transform: uppercase;
 }
+
+/* PAGE */
 
 .container {
     max-width: 850px;
@@ -126,6 +132,8 @@ header {
     line-height: 1.8;
 }
 
+/* FORMULAIRE */
+
 .form-card {
     background: white;
     border: 1px solid var(--border);
@@ -153,6 +161,8 @@ header {
     background: var(--border);
     margin: 32px 0;
 }
+
+/* CHAMPS */
 
 .field {
     margin-bottom: 21px;
@@ -207,6 +217,8 @@ textarea {
     grid-template-columns: 1fr 1fr;
     gap: 18px;
 }
+
+/* CATÉGORIES */
 
 .categories {
     display: grid;
@@ -275,16 +287,20 @@ textarea {
     border-color: #9ba9b8;
 }
 
-#otherField,
-#orderField {
+/* NUMÉRO DE COMMANDE ET AUTRE DEMANDE */
+
+#orderField,
+#otherField {
     display: none;
     margin-top: 20px;
 }
 
-#otherField.visible,
-#orderField.visible {
+#orderField.visible,
+#otherField.visible {
     display: block;
 }
+
+/* JUSTIFICATIFS */
 
 .document-info {
     display: flex;
@@ -317,6 +333,8 @@ textarea {
 .document-info strong {
     color: var(--navy);
 }
+
+/* BOUTON */
 
 .submit-button {
     width: 100%;
@@ -352,6 +370,8 @@ textarea {
     line-height: 1.7;
 }
 
+/* FOOTER */
+
 footer {
     text-align: center;
     padding: 25px;
@@ -360,6 +380,8 @@ footer {
     border-top: 1px solid var(--border);
     margin-top: 60px;
 }
+
+/* RESPONSIVE */
 
 @media (max-width: 650px) {
     header {
@@ -469,6 +491,8 @@ footer {
                 value="Nouvelle demande - Espace partenaires B2B"
             >
 
+            <!-- INFORMATIONS -->
+
             <h2 class="section-title">Vos informations</h2>
 
             <p class="section-description">
@@ -483,7 +507,13 @@ footer {
                         Nom <span class="required">*</span>
                     </label>
 
-                    <input type="text" id="nom" name="Nom" placeholder="Votre nom" required>
+                    <input
+                        type="text"
+                        id="nom"
+                        name="Nom"
+                        placeholder="Votre nom"
+                        required
+                    >
                 </div>
 
                 <div class="field">
@@ -491,7 +521,13 @@ footer {
                         Prénom <span class="required">*</span>
                     </label>
 
-                    <input type="text" id="prenom" name="Prénom" placeholder="Votre prénom" required>
+                    <input
+                        type="text"
+                        id="prenom"
+                        name="Prénom"
+                        placeholder="Votre prénom"
+                        required
+                    >
                 </div>
 
             </div>
@@ -501,7 +537,13 @@ footer {
                     Nom de la boutique <span class="required">*</span>
                 </label>
 
-                <input type="text" id="boutique" name="Nom de la boutique" placeholder="Nom de votre boutique" required>
+                <input
+                    type="text"
+                    id="boutique"
+                    name="Nom de la boutique"
+                    placeholder="Nom de votre boutique"
+                    required
+                >
             </div>
 
             <div class="field">
@@ -509,10 +551,18 @@ footer {
                     Adresse e-mail professionnelle <span class="required">*</span>
                 </label>
 
-                <input type="email" id="email" name="Email" placeholder="exemple@boutique.fr" required>
+                <input
+                    type="email"
+                    id="email"
+                    name="Email"
+                    placeholder="exemple@boutique.fr"
+                    required
+                >
             </div>
 
             <div class="divider"></div>
+
+            <!-- DEMANDE -->
 
             <h2 class="section-title">Votre demande</h2>
 
@@ -530,6 +580,7 @@ footer {
 
                     <label class="category">
                         <input type="radio" name="Catégorie" value="Commande" required>
+
                         <div class="category-content">
                             <svg viewBox="0 0 24 24">
                                 <path d="M3 7l9-4 9 4-9 4-9-4z"/>
@@ -542,6 +593,7 @@ footer {
 
                     <label class="category">
                         <input type="radio" name="Catégorie" value="Livraison">
+
                         <div class="category-content">
                             <svg viewBox="0 0 24 24">
                                 <path d="M2 5h12v12H2z"/>
@@ -555,6 +607,7 @@ footer {
 
                     <label class="category">
                         <input type="radio" name="Catégorie" value="Facturation">
+
                         <div class="category-content">
                             <svg viewBox="0 0 24 24">
                                 <path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/>
@@ -566,6 +619,7 @@ footer {
 
                     <label class="category">
                         <input type="radio" name="Catégorie" value="Produit">
+
                         <div class="category-content">
                             <svg viewBox="0 0 24 24">
                                 <path d="M8 4l4 2 4-2 5 4-3 4-2-2v11H8V10l-2 2-3-4z"/>
@@ -576,6 +630,7 @@ footer {
 
                     <label class="category">
                         <input type="radio" name="Catégorie" value="Informations commerciales">
+
                         <div class="category-content">
                             <svg viewBox="0 0 24 24">
                                 <circle cx="12" cy="12" r="9"/>
@@ -588,6 +643,7 @@ footer {
 
                     <label class="category">
                         <input type="radio" name="Catégorie" value="Réclamation">
+
                         <div class="category-content">
                             <svg viewBox="0 0 24 24">
                                 <path d="M12 3l10 18H2L12 3z"/>
@@ -599,7 +655,13 @@ footer {
                     </label>
 
                     <label class="category">
-                        <input type="radio" name="Catégorie" value="Autre demande" id="otherChoice">
+                        <input
+                            type="radio"
+                            name="Catégorie"
+                            value="Autre demande"
+                            id="otherChoice"
+                        >
+
                         <div class="category-content">
                             <svg viewBox="0 0 24 24">
                                 <path d="M4 5h16v12H9l-5 4z"/>
@@ -612,9 +674,10 @@ footer {
                 </div>
             </div>
 
-            <!-- NUMÉRO DE COMMANDE -->
+            <!-- NUMÉRO DE COMMANDE : JUSTE SOUS LES LOGOS -->
 
             <div id="orderField">
+
                 <div class="field">
                     <label for="orderNumber">
                         Numéro de commande <span class="required">*</span>
@@ -627,11 +690,13 @@ footer {
                         placeholder="Exemple : LF123456"
                     >
                 </div>
+
             </div>
 
             <!-- AUTRE DEMANDE -->
 
             <div id="otherField">
+
                 <div class="field">
                     <label for="otherDetails">
                         Précisez votre demande <span class="required">*</span>
@@ -644,6 +709,7 @@ footer {
                         placeholder="Expliquez brièvement votre besoin"
                     >
                 </div>
+
             </div>
 
             <div class="field">
@@ -673,7 +739,10 @@ footer {
                 ></textarea>
             </div>
 
+            <!-- JUSTIFICATIFS -->
+
             <div class="document-info">
+
                 <svg viewBox="0 0 24 24">
                     <path d="M12 3v12"/>
                     <path d="M8 11l4 4 4-4"/>
@@ -685,11 +754,16 @@ footer {
                     Après réception de votre demande, notre service commercial
                     pourra vous indiquer comment nous transmettre les documents nécessaires.
                 </p>
+
             </div>
 
             <div class="divider"></div>
 
-            <button type="submit" class="submit-button" id="submitButton">
+            <button
+                type="submit"
+                class="submit-button"
+                id="submitButton"
+            >
                 Transmettre la demande
             </button>
 
@@ -721,13 +795,15 @@ const categoryInputs = document.querySelectorAll(
 );
 
 function updateFields() {
+
     const selected = document.querySelector(
         'input[name="Catégorie"]:checked'
     );
 
     const category = selected ? selected.value : "";
 
-    // Affichage du champ "Autre demande"
+    // Gestion de la catégorie "Autre demande"
+
     const isOther = category === "Autre demande";
 
     otherField.classList.toggle("visible", isOther);
@@ -737,14 +813,17 @@ function updateFields() {
         otherDetails.value = "";
     }
 
-    // Affichage du numéro de commande
-    const needsOrderNumber = [
+    // Gestion du numéro de commande
+
+    const categoriesWithOrder = [
         "Commande",
         "Livraison",
         "Facturation",
         "Produit",
         "Réclamation"
-    ].includes(category);
+    ];
+
+    const needsOrderNumber = categoriesWithOrder.includes(category);
 
     orderField.classList.toggle("visible", needsOrderNumber);
     orderNumber.required = needsOrderNumber;
@@ -757,6 +836,8 @@ function updateFields() {
 categoryInputs.forEach(input => {
     input.addEventListener("change", updateFields);
 });
+
+// Gestion de l'envoi
 
 const form = document.getElementById("contactForm");
 const submitButton = document.getElementById("submitButton");
