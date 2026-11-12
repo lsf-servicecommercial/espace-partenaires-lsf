@@ -853,39 +853,22 @@ footer {
 </footer>
 
 <script>
-const categoryInputs = document.querySelectorAll(
-    'input[name="Catégorie"]'
-);
-
+const categoryInputs = document.querySelectorAll('input[name="Catégorie"]');
 const orderFields = document.querySelectorAll(".order-field");
-const orderInputs = document.querySelectorAll("[data-order-input]");
-
-const otherChoice = document.getElementById("otherChoice");
-const otherField = document.getElementById("otherField");
 const otherDetails = document.getElementById("otherDetails");
+const otherField = document.getElementById("otherField");
 
 function updateFields() {
-
-    const selected = document.querySelector(
-        'input[name="Catégorie"]:checked'
-    );
-
+    const selected = document.querySelector('input[name="Catégorie"]:checked');
     const category = selected ? selected.value : "";
 
-    // Afficher le numéro de commande uniquement
-    // sous la catégorie sélectionnée qui en a besoin.
-
     orderFields.forEach(field => {
-        const radio = field.parentElement.querySelector(
-            'input[type="radio"]'
-        );
-
+        const radio = field.parentElement.querySelector('input[type="radio"]');
         const shouldShow = radio.checked;
 
         field.classList.toggle("visible", shouldShow);
 
         const input = field.querySelector("[data-order-input]");
-
         input.required = shouldShow;
 
         if (!shouldShow) {
@@ -896,10 +879,7 @@ function updateFields() {
         }
     });
 
-    // Gestion de la catégorie Autre demande.
-
     const isOther = category === "Autre demande";
-
     otherField.classList.toggle("visible", isOther);
     otherDetails.required = isOther;
 
@@ -912,14 +892,92 @@ categoryInputs.forEach(input => {
     input.addEventListener("change", updateFields);
 });
 
-// Gestion de l'envoi du formulaire.
-
 const form = document.getElementById("contactForm");
 const submitButton = document.getElementById("submitButton");
 
-form.addEventListener("submit", function() {
+form.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    if (!form.reportValidity()) return;
+
     submitButton.disabled = true;
     submitButton.textContent = "Envoi en cours...";
+
+    try {
+        const response = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: {
+                "Accept": "application/json"
+            }
+        });
+
+        if (response.ok) {
+            form.innerHTML = `
+                <div style="
+                    text-align:center;
+                    padding:45px 15px;
+                ">
+                    <div style="
+                        width:58px;
+                        height:58px;
+                        border-radius:50%;
+                        background:#edf5ef;
+                        color:#32734b;
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        margin:0 auto 22px;
+                        font-size:27px;
+                    ">
+                        ✓
+                    </div>
+
+                    <h2 style="
+                        color:#14243a;
+                        font-size:21px;
+                        font-weight:800;
+                        margin-bottom:15px;
+                    ">
+                        Votre demande a bien été transmise !
+                    </h2>
+
+                    <p style="
+                        color:#687687;
+                        font-size:13px;
+                        line-height:1.9;
+                        max-width:480px;
+                        margin:0 auto 22px;
+                    ">
+                        Merci d’avoir contacté notre service commercial.
+                        Notre équipe a bien reçu votre demande et reviendra
+                        vers vous dans les meilleurs délais afin de vous
+                        apporter une réponse adaptée.
+                    </p>
+
+                    <p style="
+                        color:#14243a;
+                        font-size:10px;
+                        font-weight:700;
+                        letter-spacing:1px;
+                        text-transform:uppercase;
+                    ">
+                        Le Slip Français · Service commercial B2B
+                    </p>
+                </div>
+            `;
+        } else {
+            throw new Error("Erreur lors de l'envoi");
+        }
+
+    } catch (error) {
+        submitButton.disabled = false;
+        submitButton.textContent = "Réessayer";
+
+        alert(
+            "Votre demande n'a pas pu être transmise. Veuillez réessayer dans quelques instants."
+        );
+    }
 });
 </script>
 
