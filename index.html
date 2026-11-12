@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Espace partenaires | Service commercial</title>
+<title>Espace partenaires | Le Slip Français</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,13 +64,29 @@ header {
     text-transform: uppercase;
 }
 
-.logo {
+/* LOGO CENTRÉ ET CLIQUABLE */
+
+.logo-link {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    display: block;
     max-width: 180px;
     max-height: 65px;
+    width: auto;
+    height: auto;
     object-fit: contain;
+}
+
+.logo-link:hover {
+    opacity: 0.75;
 }
 
 .header-right {
@@ -116,7 +132,7 @@ header {
     line-height: 1.8;
 }
 
-/* FORM CARD */
+/* FORMULAIRE */
 
 .form-card {
     background: white;
@@ -146,7 +162,7 @@ header {
     margin: 32px 0;
 }
 
-/* INPUTS */
+/* CHAMPS */
 
 .field {
     margin-bottom: 21px;
@@ -166,7 +182,6 @@ header {
 }
 
 input,
-select,
 textarea {
     width: 100%;
     padding: 14px 15px;
@@ -181,7 +196,6 @@ textarea {
 }
 
 input:focus,
-select:focus,
 textarea:focus {
     border-color: var(--blue);
     box-shadow: 0 0 0 3px rgba(38,63,92,0.07);
@@ -204,7 +218,7 @@ textarea {
     gap: 18px;
 }
 
-/* CATEGORIES */
+/* CATÉGORIES */
 
 .categories {
     display: grid;
@@ -273,7 +287,7 @@ textarea {
     border-color: #9ba9b8;
 }
 
-/* OTHER REQUEST */
+/* AUTRE DEMANDE */
 
 #otherField {
     display: none;
@@ -284,31 +298,41 @@ textarea {
     display: block;
 }
 
-/* FILE */
+/* JUSTIFICATIFS */
 
-.file-area {
-    border: 1px dashed #cbd3dd;
+.document-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    padding: 17px;
+    background: #f7f9fc;
+    border: 1px solid var(--border);
     border-radius: 7px;
-    padding: 23px;
-    text-align: center;
-    background: #fafbfd;
+    margin-bottom: 25px;
 }
 
-.file-area input {
-    border: none;
-    padding: 0;
+.document-info svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    stroke: #52657b;
+    fill: none;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.document-info p {
     font-size: 11px;
-    max-width: 100%;
+    color: #687687;
+    line-height: 1.7;
 }
 
-.file-area p {
-    font-size: 10px;
-    color: var(--muted);
-    margin-top: 10px;
-    line-height: 1.6;
+.document-info strong {
+    color: var(--navy);
 }
 
-/* SUBMIT */
+/* BOUTON */
 
 .submit-button {
     width: 100%;
@@ -355,7 +379,7 @@ footer {
     margin-top: 60px;
 }
 
-/* MOBILE */
+/* RESPONSIVE */
 
 @media (max-width: 650px) {
     header {
@@ -365,6 +389,7 @@ footer {
 
     .logo {
         max-width: 105px;
+        max-height: 50px;
     }
 
     .header-left strong {
@@ -408,25 +433,40 @@ footer {
 <body>
 
 <header>
+
     <div class="header-left">
         <strong>Espace partenaires</strong>
         <span>Accès boutiques B2B</span>
     </div>
 
-    <img
-        class="logo"
-        src="https://upload.wikimedia.org/wikipedia/commons/8/87/6421a37cbcde9a43caecdbe7_LeSlipFran%C3%A7ais_Logo.png"
-        alt="Le Slip Français"
+    <a
+        class="logo-link"
+        href="https://www.leslipfrancais.fr/collections/sous-vetements-homme?utm_source=google&campaign_id=16376466431&ad_id=774482919985&utm_medium=cpc&utm_campaign=sn-brand-exact&utm_content=135125692073&utm_term=&gad_source=1&gad_campaignid=16376466431&gbraid=0AAAAADs4ju1WwFcImkTBppZtxo27pfhMN&gclid=Cj0KCQiA5NXXBhDEARIsABAJhdLLvu03a6Qxg-TmtB5kkZcTPXlpiDbHxECF7mQGPQbMUjS8l_niQ9kaAmenEALw_wcB"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Visiter le site du Slip Français"
+        title="Visiter le site du Slip Français"
     >
+        <img
+            class="logo"
+            src="https://upload.wikimedia.org/wikipedia/commons/3/39/Logo-Le-Slip-Francais.png?utm_source=fr.wikipedia.org&utm_campaign=index&utm_content=original"
+            alt="Logo Le Slip Français"
+        >
+    </a>
 
-    <div class="header-right">Service commercial</div>
+    <div class="header-right">
+        Service commercial
+    </div>
+
 </header>
 
 <main class="container">
 
     <div class="intro">
         <div class="eyebrow">Espace dédié aux partenaires</div>
+
         <h1>Comment pouvons-nous vous aider ?</h1>
+
         <p>
             Utilisez cet espace pour transmettre votre demande à notre
             service commercial. Notre équipe pourra l'étudier et vous
@@ -440,15 +480,18 @@ footer {
             id="contactForm"
             action="https://formspree.io/f/mwlokagl"
             method="POST"
-            enctype="multipart/form-data"
         >
 
-            <input type="hidden" name="_subject"
-                   value="Nouvelle demande - Espace partenaires B2B">
+            <input
+                type="hidden"
+                name="_subject"
+                value="Nouvelle demande - Espace partenaires B2B"
+            >
 
-            <!-- IDENTIFICATION -->
+            <!-- INFORMATIONS -->
 
             <h2 class="section-title">Vos informations</h2>
+
             <p class="section-description">
                 Renseignez les informations de votre boutique afin
                 que notre équipe puisse vous identifier.
@@ -457,41 +500,75 @@ footer {
             <div class="row-fields">
 
                 <div class="field">
-                    <label for="nom">Nom <span class="required">*</span></label>
-                    <input type="text" id="nom" name="Nom"
-                           placeholder="Votre nom" required>
+                    <label for="nom">
+                        Nom <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nom"
+                        name="Nom"
+                        placeholder="Votre nom"
+                        required
+                    >
                 </div>
 
                 <div class="field">
-                    <label for="prenom">Prénom <span class="required">*</span></label>
-                    <input type="text" id="prenom" name="Prénom"
-                           placeholder="Votre prénom" required>
+                    <label for="prenom">
+                        Prénom <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="prenom"
+                        name="Prénom"
+                        placeholder="Votre prénom"
+                        required
+                    >
                 </div>
 
             </div>
 
             <div class="field">
-                <label for="boutique">Nom de la boutique <span class="required">*</span></label>
-                <input type="text" id="boutique" name="Nom de la boutique"
-                       placeholder="Nom de votre boutique" required>
+                <label for="boutique">
+                    Nom de la boutique <span class="required">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="boutique"
+                    name="Nom de la boutique"
+                    placeholder="Nom de votre boutique"
+                    required
+                >
             </div>
 
             <div class="field">
-                <label for="email">Adresse e-mail professionnelle <span class="required">*</span></label>
-                <input type="email" id="email" name="Email"
-                       placeholder="exemple@boutique.fr" required>
+                <label for="email">
+                    Adresse e-mail professionnelle <span class="required">*</span>
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="Email"
+                    placeholder="exemple@boutique.fr"
+                    required
+                >
             </div>
 
             <div class="divider"></div>
 
-            <!-- CATEGORIE -->
+            <!-- DEMANDE -->
 
             <h2 class="section-title">Votre demande</h2>
+
             <p class="section-description">
                 Sélectionnez la catégorie correspondant à votre besoin.
             </p>
 
             <div class="field">
+
                 <span class="field-label">
                     Catégorie <span class="required">*</span>
                 </span>
@@ -499,8 +576,13 @@ footer {
                 <div class="categories">
 
                     <label class="category">
-                        <input type="radio" name="Catégorie"
-                               value="Commande" required>
+                        <input
+                            type="radio"
+                            name="Catégorie"
+                            value="Commande"
+                            required
+                        >
+
                         <div class="category-content">
                             <svg viewBox="0 0 24 24">
                                 <path d="M3 7l9-4 9 4-9 4-9-4z"/>
@@ -512,8 +594,12 @@ footer {
                     </label>
 
                     <label class="category">
-                        <input type="radio" name="Catégorie"
-                               value="Livraison">
+                        <input
+                            type="radio"
+                            name="Catégorie"
+                            value="Livraison"
+                        >
+
                         <div class="category-content">
                             <svg viewBox="0 0 24 24">
                                 <path d="M2 5h12v12H2z"/>
@@ -526,8 +612,12 @@ footer {
                     </label>
 
                     <label class="category">
-                        <input type="radio" name="Catégorie"
-                               value="Facturation">
+                        <input
+                            type="radio"
+                            name="Catégorie"
+                            value="Facturation"
+                        >
+
                         <div class="category-content">
                             <svg viewBox="0 0 24 24">
                                 <path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/>
@@ -538,8 +628,12 @@ footer {
                     </label>
 
                     <label class="category">
-                        <input type="radio" name="Catégorie"
-                               value="Produit">
+                        <input
+                            type="radio"
+                            name="Catégorie"
+                            value="Produit"
+                        >
+
                         <div class="category-content">
                             <svg viewBox="0 0 24 24">
                                 <path d="M8 4l4 2 4-2 5 4-3 4-2-2v11H8V10l-2 2-3-4z"/>
@@ -549,8 +643,12 @@ footer {
                     </label>
 
                     <label class="category">
-                        <input type="radio" name="Catégorie"
-                               value="Informations commerciales">
+                        <input
+                            type="radio"
+                            name="Catégorie"
+                            value="Informations commerciales"
+                        >
+
                         <div class="category-content">
                             <svg viewBox="0 0 24 24">
                                 <circle cx="12" cy="12" r="9"/>
@@ -562,8 +660,12 @@ footer {
                     </label>
 
                     <label class="category">
-                        <input type="radio" name="Catégorie"
-                               value="Réclamation">
+                        <input
+                            type="radio"
+                            name="Catégorie"
+                            value="Réclamation"
+                        >
+
                         <div class="category-content">
                             <svg viewBox="0 0 24 24">
                                 <path d="M12 3l10 18H2L12 3z"/>
@@ -575,8 +677,13 @@ footer {
                     </label>
 
                     <label class="category">
-                        <input type="radio" name="Catégorie"
-                               value="Autre demande" id="otherChoice">
+                        <input
+                            type="radio"
+                            name="Catégorie"
+                            value="Autre demande"
+                            id="otherChoice"
+                        >
+
                         <div class="category-content">
                             <svg viewBox="0 0 24 24">
                                 <path d="M4 5h16v12H9l-5 4z"/>
@@ -589,46 +696,77 @@ footer {
                 </div>
             </div>
 
+            <!-- AUTRE DEMANDE -->
+
             <div id="otherField">
+
                 <div class="field">
                     <label for="otherDetails">
                         Précisez votre demande <span class="required">*</span>
                     </label>
-                    <input type="text" id="otherDetails"
-                           name="Précision autre demande"
-                           placeholder="Expliquez brièvement votre besoin">
+
+                    <input
+                        type="text"
+                        id="otherDetails"
+                        name="Précision autre demande"
+                        placeholder="Expliquez brièvement votre besoin"
+                    >
                 </div>
+
             </div>
 
             <div class="field">
-                <label for="objet">Objet de la demande <span class="required">*</span></label>
-                <input type="text" id="objet" name="Objet"
-                       placeholder="Exemple : Question concernant une commande"
-                       required>
+                <label for="objet">
+                    Objet de la demande <span class="required">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="objet"
+                    name="Objet"
+                    placeholder="Exemple : Question concernant une commande"
+                    required
+                >
             </div>
 
             <div class="field">
-                <label for="message">Description de votre demande <span class="required">*</span></label>
-                <textarea id="message" name="Description"
-                          placeholder="Décrivez votre demande avec le plus de précisions possible..."
-                          required></textarea>
+                <label for="message">
+                    Description de votre demande <span class="required">*</span>
+                </label>
+
+                <textarea
+                    id="message"
+                    name="Description"
+                    placeholder="Décrivez votre demande avec le plus de précisions possible..."
+                    required
+                ></textarea>
             </div>
 
-            <div class="field">
-                <label for="fichier">Document complémentaire</label>
-                <div class="file-area">
-                    <input type="file" id="fichier" name="Pièce jointe"
-                           accept=".pdf,.jpg,.jpeg,.png">
-                    <p>
-                        Vous pouvez joindre un document PDF ou une image
-                        pour compléter votre demande.
-                    </p>
-                </div>
+            <!-- JUSTIFICATIFS -->
+
+            <div class="document-info">
+
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 3v12"/>
+                    <path d="M8 11l4 4 4-4"/>
+                    <path d="M4 17v3h16v-3"/>
+                </svg>
+
+                <p>
+                    <strong>Vous souhaitez transmettre un justificatif ?</strong><br>
+                    Après réception de votre demande, notre service commercial
+                    pourra vous indiquer comment nous transmettre les documents nécessaires.
+                </p>
+
             </div>
 
             <div class="divider"></div>
 
-            <button type="submit" class="submit-button" id="submitButton">
+            <button
+                type="submit"
+                class="submit-button"
+                id="submitButton"
+            >
                 Transmettre la demande
             </button>
 
